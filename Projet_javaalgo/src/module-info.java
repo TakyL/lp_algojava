@@ -1,0 +1,2 @@
+module Projet_javaalgo {
+}
