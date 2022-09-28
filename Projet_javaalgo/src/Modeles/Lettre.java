@@ -22,5 +22,10 @@ public class Lettre {
 		this.lettre = lettre;
 		this.code = code;
 	}
+	@Override
+	public String toString() {
+		return "Lettre [lettre=" + lettre + ", code=" + code + "]";
+	}
+	
 	
 }

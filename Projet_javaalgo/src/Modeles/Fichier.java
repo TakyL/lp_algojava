@@ -29,43 +29,40 @@ public class Fichier {
 		}
 	}
 	
-	public String[] FichierToTableauMots() //Renvoie un tableau qui contient tous les mots à traduire dont les espaces
+	public Liste FichierToListe() //Renvoie un tableau qui contient la liste de reference
 	{
 		
-		String [] tab= new String [CompteurMotfichier()];
+		//String [] tab= new String [CompteurMotfichier()];
+		Liste ListeRef = new Liste();
 		Scanner scan;
 		try {
 			scan = new Scanner(new File(urlfichier));
 		
-		int index=0;
+		
 		  while (scan.hasNextLine()) {
-	 
-	            tab = scan.nextLine().split(" ");
-	            index++;
+			 String ligne= scan.next();
+			 Lettre l = new Lettre(ligne.substring(0,1),ligne.substring(1));
+			 //System.out.println("lettre"+l.getLettre());
+			 ListeRef.inserer(l);
+			 
 	        }
 	        scan.close();
 		    
-            for(int i=0;i<tab.length;i++){
-                System.out.print(tab[i]+"|");
-            }
+	        //ListeRef.afficher();
+	        //ListeRef.AffichageFin();
+	        //ListeRef.affichage();
+	       
 
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+		 return ListeRef;
+	}
 
-			return tab;
-}
-	/*
-ex: Bonjour la mouche => 
-0=> Bonjour
-1=> ESPACE
-2=> la
-3=> ESPACE
-4=>mouche 
-*/
 
-	public int CompteurMotfichier()	//COmpte le nb de mot pour obtenir la taille du tableau à réaliser
+
+	public int CompteurMotfichier()	//Compte le nb de mot pour obtenir la taille du tableau à réaliser en fonction des espaces présents dans le fichier
 	{
 	      File f1=new File(urlfichier); //Creation of File Descriptor for input file
 	      String[] words=null;    //Intialize the word Array

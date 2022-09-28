@@ -19,17 +19,33 @@ public class main {
 		 * 		->Le resultat est enrengistré dans un tableau qui ensuite est affiché sur l'interface graphique
 		 * 
 		 */
-		Fichier f0 = new Fichier("C:\\\\Users\\\\leduc41u\\\\eclipse-workspace\\\\projetjava_algo\\\\src\\\\Texte\\\\mot.txt");
-		f0.LectureFichier();
-		f0.FichierToTableauMots();
+		//Fichier f0 = new Fichier("C:\\\\Users\\\\leduc41u\\\\eclipse-workspace\\\\projetjava_algo\\\\src\\\\Texte\\\\mot.txt");
+		
+		Fichier f1 = new Fichier("C:/Users/leduc41u/eclipse-workspace/projetjava_algo/src/Texte/ref.txt");
+		
+		//f1.LectureFichier();
+		Liste liste0 = f1.FichierToListe();	//Récupère toute la liste de conversion
+		Conversion c0 = new Conversion(liste0);	//Liste de conversion de base .  
+		c0.recherchecode("e");	//Liste de conversion.recherchercode(caractère)
+		liste0.afficher_position();
+		//liste0.afficher_position();
+		//liste0.RetourneAuDebut();
+		String mot = "Patate";
+		for(int i=0; i<=mot.length();i++)
+		{
+			System.out.println(c0.recherchecode(String.valueOf(mot.charAt(i)).toLowerCase()));
+			liste0.afficher_position();
+		}
+		//f0.FichierToTableauMots();
 
 		
 	
 	
-	CodeMorse c0 = new CodeMorse(".-");
+	//CodeMorse c0 = new CodeMorse(".-");
 	Lettre l0 = new Lettre("a",".-");
+	//Liste l0 = new Liste()
 
-	c0.ConversionCodeToLettre();
+	//c0.ConversionCodeToLettre();
 
 	}
 
