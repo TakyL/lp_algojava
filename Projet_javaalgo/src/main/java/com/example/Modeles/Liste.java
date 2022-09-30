@@ -63,7 +63,7 @@ public class Liste {	//Tableau de liste A/.- => B/-...  en gros on associe chaqu
 	
 		}
 		
-		System.out.println("Je suis bien remont� au d�but"+getPrec().getLettre_ref());
+		System.out.println("Je suis bien remonté au début"+getPrec().getLettre_ref());
 		return Prec;
 	}
 	

@@ -20,9 +20,9 @@ public class main {
 		 * 
 		 */
 		//Fichier f0 = new Fichier("C:\\\\Users\\\\leduc41u\\\\eclipse-workspace\\\\projetjava_algo\\\\src\\\\Texte\\\\mot.txt");
-		
-		Fichier f1 = new  Fichier("/Texte/ref.txt");
-		
+
+		Fichier f1 = new  Fichier("src/main/java/com/example/Texte/ref.txt");
+
 		//f1.LectureFichier();
 		Liste liste0 = f1.FichierToListe();	//R�cup�re toute la liste de conversion
 		Conversion c0 = new Conversion(liste0);	//Liste de conversion de base .  
@@ -38,7 +38,7 @@ public class main {
 		}
 		//f0.FichierToTableauMots();
 
-		
+
 	
 	
 	//CodeMorse c0 = new CodeMorse(".-");
