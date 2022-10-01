@@ -33,6 +33,7 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -64,6 +65,7 @@
                      <children>
                         <Button fx:id="btn_TvM" mnemonicParsing="false" onAction="#Conv_TvM" prefWidth="238.0" text="Texte Vers Morse" GridPane.rowIndex="1" />
                         <Button fx:id="btn_MvT" mnemonicParsing="false" onAction="#Conv_Mvt" prefWidth="160.0" text="Morse vers Texte" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lbl_erreur" text="Label" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

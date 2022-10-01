@@ -4,15 +4,16 @@ public class main {
 	public static void main(String args[])	//Main fx
 	{
 		/*
-		 * On aura une Liste qui contiendra toutes les lettres avec leur �quivalent en morse � partir d'un fichier txt [s�parateur]
-		 * Ensuite on ouvre le fichier, on recup�re le tableau des mots [Tableau de string][fait]
-		 * 	-> Boucle sur chaque mot
-		 * 		->Chaque mot est d�compos� en lettre [soit dans la classe lettre soit dans la classe mot][� def]
-		 * 		->Ensuite chaque lettre fait appel � une fonction de conversion qui renvoie soit le code morse soit l'inverse [classes lettre et code barre]
-		 * 		->Le resultat est enrengistr� dans un tableau qui ensuite est affich� sur l'interface graphique
-		 * 
+			Une liste(aka le dico) sera crée à partir du fichier ref.txt
+			Cette liste contiendra toutes les ref de l'alphabet et son équivalent en morse
+			La conversion pourra se faire à l'aide de la classe conversion qui prend comme argument une liste( dans notre cas ça sera toujours le dico aka liste0)
+					-Pour l'instant c'est c0
+			La classe conversion contient les méthodes permettant de convertir les mots en morse[cpc] et inversement
+
+			Le reste de la procédure algo reste encore à convenir mais on peut penser à un tableau qui sera ensuite concat dans un string et qui sera afficher dans LabelArea
+
+			Un fichier de test sera chargé au lancement de l'application
 		 */
-		//Fichier f0 = new Fichier("C:\\\\Users\\\\leduc41u\\\\eclipse-workspace\\\\projetjava_algo\\\\src\\\\Texte\\\\mot.txt");
 
 		Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
 
