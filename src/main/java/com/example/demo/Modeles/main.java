@@ -20,15 +20,15 @@ public class main {
 		//f1.LectureFichier();
 		Liste liste0 = f1.FichierToListe();	//R�cup�re toute la liste de conversion
 		Conversion c0 = new Conversion(liste0);	//Liste de conversion de base .  
-		c0.recherchecode("e");	//Liste de conversion.recherchercode(caract�re)
-		liste0.afficher_position();
-		//liste0.afficher_position();
+		//c0.recherchecode("e");	//Liste de conversion.recherchercode(caract�re)
+		//liste0.afficher_position(); // What is this shit ??
 		//liste0.RetourneAuDebut();
-		String mot = "Patate";
-		for(int i=0; i<=mot.length();i++)
+		String mot = "patate";
+		for(int i=0; i<mot.length();i++)
 		{
-			System.out.println(c0.recherchecode(String.valueOf(mot.charAt(i)).toLowerCase()));
-			liste0.afficher_position();
+			//System.out.println(c0.recherchecode(String.valueOf(mot.charAt(i)).toLowerCase()));
+			System.out.println(mot.charAt(i));
+			c0.recherchecode(String.valueOf(mot.charAt(i)));
 		}
 		//f0.FichierToTableauMots();
 

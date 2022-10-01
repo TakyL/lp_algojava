@@ -50,7 +50,7 @@ public class Liste {	//Tableau de liste A/.- => B/-...  en gros on associe chaqu
 
 
 	
-	public Liste RetourneAuDebut()//Remonte au premier �l�ment et repointe dessus de la liste [non test�]
+	public Liste RetourneAuDebut()//Permet de parcourir la liste jusqu'a la lettre a
 	{
 		while(Prec.getPrec() != null)
 		{
@@ -58,11 +58,9 @@ public class Liste {	//Tableau de liste A/.- => B/-...  en gros on associe chaqu
 			Prec.afficher_position();
 			Prec.setSuivant(Prec);
 			Prec = Prec.getPrec();
-			
-			
-	
+
 		}
-		
+
 		System.out.println("Je suis bien remonté au début"+getPrec().getLettre_ref());
 		return Prec;
 	}
@@ -137,7 +135,8 @@ public class Liste {	//Tableau de liste A/.- => B/-...  en gros on associe chaqu
 
 	public void afficher_position()	//Permet de connaitre l'emplacement des lettrers (debug)
 	{
-		if(getSuivant() == null)System.out.println("PREC"+getPrec().getLettre_ref());
+		if(getSuivant() == null)System.out.println(Lettre_ref);
+			// System.out.println("PREC"+getPrec().getLettre_ref());
 		else if(getPrec() == null) System.out.println("NEXT"+getSuivant().getLettre_ref());
 		else System.out.println("ALL"+getSuivant().getLettre_ref()+getPrec().getLettre_ref());
 	}
