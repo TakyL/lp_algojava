@@ -2,7 +2,7 @@ package com.example.demo.Modeles;
 
 public class Conversion {
 	Liste l;
-	
+
 	public Liste getL() {
 		return l;
 	}
@@ -10,56 +10,87 @@ public class Conversion {
 	public void setL(Liste l) {
 		this.l = l;
 	}
-	
+
 
 	public Conversion(Liste l) {
 		super();
 		this.l = l;
 	}
 
-		//NOTE: Toujours v�rifier la position car pour l'instant, getsuivant() a tendance a �tre la lettre actuelle et que du coup la lettre actuelle ait de fortes chances d'�tre null
-	public String recherchecode(String mot)	//Recherche le code binaire d'un caract�re associ�
-	{
-		
-		setL(l.RetourneAuDebut());
-		//l.afficher_position();
-			do
-			{
-					//Note : Faire remonter la piste de lecteur au tout debut � chaque nouvelle recherche dans la liste 
-				//System.out.println("Recherche:"+mot+"/Trouve:"+Lettre_ref.getLettre());
-				if(l.Prec == null)	//Si on commence au debut de la liste [ne marche pas, c'est B qui marche]
-				{
-					System.out.println("A");
-					l.afficher_position();
-					l.setLettre_ref(l.getSuivant().getLettre_ref());
-					System.out.println("Recherche:"+mot+"/Trouve:"+l.Lettre_ref.getLettre()+" Statut "+l.Lettre_ref.getLettre().equals(mot));
-					l.Suivant = l.Suivant.getSuivant();
-					
-				}
-				else	//Si on commence � la fin de la liste
-				{
-					System.out.println("B");
-					l.setLettre_ref(l.getPrec().getLettre_ref());
-					System.out.println("Recherche:"+mot+"/Trouve:"+l.Lettre_ref.getLettre()+" Statut "+l.Lettre_ref.getLettre().equals(mot));
-					l.Suivant = l.Prec;
-					l.Prec = l.Prec.getPrec();
-					
-				}
-				
-			}while(!(l.Lettre_ref.getLettre().equals(mot)));
-			System.out.println("SORTIE");
-	
-			return l.Lettre_ref.getCode();
-		
-		
 
-			
-		
-		
-	}
-	
-	public void recherchemot(String code)	//Retrouve le mot en fonction du code saisie
+	public String RechercheMorse(String lettre)	//Recherche le code morse d'une lettre
 	{
-		
+		Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
+		setL(f1.FichierToListe());	//Crée le dictionnaire en fonction du fichier ref.txt
+
+		while(!(l.Lettre_ref.getLettre().equals(lettre))) {	//Parcours de la liste(dictionnaire)
+			l.setLettre_ref(l.getPrec().getLettre_ref());
+			l.setPrec(l.getPrec().getPrec());
+		}
+		return l.Lettre_ref.getCode();
+	}
+
+	public String RecherchetLettre(String code)	//Retrouve la lettre en fonction du code saisie
+	{
+		Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
+		setL(f1.FichierToListe());	//Crée le dictionnaire en fonction du fichier ref.txt
+
+
+		while(!(l.Lettre_ref.getCode().equals(code))){	//Parcours de la liste(dictionnaire)
+			//	System.out.println("Je recherche le mot"+l.Lettre_ref.getCode()+"/"+code);
+			l.setLettre_ref(l.getPrec().getLettre_ref());
+			l.setPrec(l.getPrec().getPrec());
+		}
+		//System.out.println("SORTIE : "+ l.Lettre_ref.getLettre() +l.Lettre_ref.getCode());
+
+		return l.Lettre_ref.getLettre();
+	}
+
+	public String ConversionMotsVersMorse(String Mot)	//Recherche le morse à partir d'un mot/phrase
+	{
+		String MotEnMorse = "";	//Texte à afficher
+		String [] tab = {" "};	//Tableau contenant les différents mots à traduire
+
+		if(Mot.contains(" "))	//Si la phrase contient plusieurs mots
+		{
+			tab = Mot.split(" ");	//Stocke tous les mots de la phrase à traduire dans le tableau
+
+		}else tab[0] = Mot;//Sinon ne contient qu'un seul mot
+
+		for(int j = 0; j<= tab.length-1;j++) {//Boucle pour chaque mot présent dans le tableau de mots
+			//System.out.println("MOT SELECTIONNE : "+tab[j]);
+			for (int i = 0; i <= tab[j].length() - 1; i++) {	//Boucle pour chaque mot
+				//MotEnMorse = MotEnMorse + recherchecode(String.valueOf(tab[j].charAt(i)).toLowerCase() + " ");
+				//System.out.println("Ctrl"+tab[j].toLowerCase());
+				MotEnMorse = MotEnMorse + RechercheMorse(String.valueOf(tab[j].toLowerCase().charAt(i))) + " ";	//Concat le code morse
+				//System.out.println("Morse : " + MotEnMorse);
+			}
+		}
+		System.out.println("Morse : " + MotEnMorse);
+
+		return MotEnMorse;
+	}
+
+	/*Note chaque lettre en code morse est séparé d'un espace*/
+	public String ConversionMorseVersMots(String Code)	//Recherche le mot à partir d'un code morse
+	{
+		String MorseEnMot = "";	//Texte a afficher
+		String [] tab ={" "};	//Tableau contenant les différents code morse à traduire
+
+		if(Code.contains(" "))	//Recherche si un espace est detecté car un espace = deux lettres mini
+		{
+			tab = Code.split(" ");
+		}else tab[0]=Code;
+
+
+		for (int i = 0; i <= tab.length - 1; i++) {
+			//System.out.println(tab[i]);
+			MorseEnMot = MorseEnMot + RecherchetLettre(tab[i]);	//Concat
+		}
+		MorseEnMot = MorseEnMot + " ";
+
+		System.out.println("Mot ou phrase : " + MorseEnMot );
+
+		return MorseEnMot;
 	}
 }

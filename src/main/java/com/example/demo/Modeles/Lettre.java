@@ -3,7 +3,8 @@ package com.example.demo.Modeles;
 public class Lettre {
 	String lettre;	//A B C
 	String code;// Code morse de la lettre associ�e
-	
+
+		//Getters et Setters
 	public String getLettre() {
 		return lettre;
 	}
@@ -22,6 +23,7 @@ public class Lettre {
 		this.lettre = lettre;
 		this.code = code;
 	}
+
 	@Override
 	public String toString() {
 		return "Lettre [lettre=" + lettre + ", code=" + code + "]";
