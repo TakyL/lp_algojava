@@ -46,6 +46,7 @@ public class Fichier {
 			 ListeRef.inserer(l);
 			 
 	        }
+		  	ListeRef.setLettre_ref(ListeRef.getSuivant().getLettre_ref());
 	        scan.close();
 		    
 	        //ListeRef.afficher();

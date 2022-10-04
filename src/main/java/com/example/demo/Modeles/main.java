@@ -24,12 +24,15 @@ public class main {
 		//liste0.afficher_position(); // What is this shit ??
 		//liste0.RetourneAuDebut();
 		String mot = "patate";
-		for(int i=0; i<mot.length();i++)
-		{
-			//System.out.println(c0.recherchecode(String.valueOf(mot.charAt(i)).toLowerCase()));
-			System.out.println(mot.charAt(i));
-			c0.recherchecode(String.valueOf(mot.charAt(i)));
-		}
+		Conversion Trouveur = new Conversion(liste0);
+		System.out.println(Trouveur.recherchemot(".--"));
+		//liste0.Lettre_ref.getCode();
+//		for(int i=0; i<mot.length();i++)
+//		{
+//			//System.out.println(c0.recherchecode(String.valueOf(mot.charAt(i)).toLowerCase()));
+//			System.out.println(mot.charAt(i));
+//			c0.recherchecode(String.valueOf(mot.charAt(i)));
+//		}
 		//f0.FichierToTableauMots();
 
 
@@ -40,6 +43,53 @@ public class main {
 	//Liste l0 = new Liste()
 
 	//c0.ConversionCodeToLettre();
+
+		BinaryTree tree = new BinaryTree();
+		// TODO : Pour chaques noeuds, try de getLettre(".") (ex ...) comme ça si dico existe pas on met null et basta
+		// create root
+		tree.root = new Node("root",null);
+		// Each left child represents a "dot" in the code, and each right child represents a "dash."
+		// create blank nodes left side of the tree
+
+			tree.root.left = new Node(".", Trouveur.recherchemot("."));
+			tree.root.left.left = new Node("..", Trouveur.recherchemot(".."));
+			tree.root.left.left.left = new Node("...", Trouveur.recherchemot("..."));
+			tree.root.left.left.right = new Node("..-", Trouveur.recherchemot("..-"));
+			tree.root.left.left.left.left = new Node("....", Trouveur.recherchemot("...."));
+			tree.root.left.left.left.right = new Node("...-", Trouveur.recherchemot("...-"));
+			tree.root.left.left.right.left = new Node("..-.", Trouveur.recherchemot("..-."));
+			//FIXME Je n'existe pas dans les 26 lettres
+			//tree.root.left.left.right.right = new Node("..--", Trouveur.recherchemot("..--"));
+			//
+			tree.root.left.right = new Node(".-", Trouveur.recherchemot(".-"));
+			tree.root.left.right.left = new Node(".-.", Trouveur.recherchemot(".-."));
+			tree.root.left.right.left.left = new Node(".-..", Trouveur.recherchemot(".-.."));
+			//FIXME Je n'existe pas dans les 26 lettres
+			//tree.root.left.right.left.right = new Node(".-.-", Trouveur.recherchemot(".-.-"));
+			tree.root.left.right.right = new Node(".--", Trouveur.recherchemot(".--"));
+			tree.root.left.right.right.left = new Node(".--.", Trouveur.recherchemot(".--."));
+			tree.root.left.right.right.right = new Node(".---", Trouveur.recherchemot(".---"));
+			// create blank nodes right side of the tree
+			tree.root.right = new Node("-", Trouveur.recherchemot("-"));
+			tree.root.right.left = new Node("-.", Trouveur.recherchemot("-."));
+			tree.root.right.left.left = new Node("-..", Trouveur.recherchemot("-.."));
+			tree.root.right.left.left.left = new Node("-...", Trouveur.recherchemot("-..."));
+			tree.root.right.left.left.right = new Node("-..-", Trouveur.recherchemot("-..-"));
+			tree.root.right.left.right = new Node("-.-", Trouveur.recherchemot("-.-"));
+			tree.root.right.left.right.left = new Node("-.-.", Trouveur.recherchemot("-.-."));
+			tree.root.right.left.right.right = new Node("-.--", Trouveur.recherchemot("-.--"));
+			//
+			tree.root.right.right = new Node("--", Trouveur.recherchemot("--"));
+			tree.root.right.right.left = new Node("--.", Trouveur.recherchemot("--."));
+			//FIXME Je suis focntionnel pour recherchemot mais recherchecode(z) non
+			tree.root.right.right.left.left = new Node("--..", Trouveur.recherchemot("--.."));
+			tree.root.right.right.left.right = new Node("--.-", Trouveur.recherchemot("--.-"));
+			tree.root.right.right.right = new Node("---", Trouveur.recherchemot("---"));
+			//FIXME Je n'existe pas dans les 26 lettres
+			//tree.root.right.right.right.left = new Node("---.", Trouveur.recherchemot("---."));
+			//tree.root.right.right.right.right = new Node("----", Trouveur.recherchemot("----"));
+			tree.searchNodeFromMorseCode(tree.root, "-.--");
+
 
 	}
 

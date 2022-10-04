@@ -2,7 +2,7 @@ package com.example.demo.Modeles;
 
 public class Conversion {
 	Liste l;
-	
+
 	public Liste getL() {
 		return l;
 	}
@@ -10,57 +10,81 @@ public class Conversion {
 	public void setL(Liste l) {
 		this.l = l;
 	}
-	
+
 
 	public Conversion(Liste l) {
 		super();
 		this.l = l;
 	}
 
-		//NOTE: Toujours v�rifier la position car pour l'instant, getsuivant() a tendance a �tre la lettre actuelle et que du coup la lettre actuelle ait de fortes chances d'�tre null
+	//NOTE: Toujours v�rifier la position car pour l'instant, getsuivant() a tendance a �tre la lettre actuelle et que du coup la lettre actuelle ait de fortes chances d'�tre null
 	public String recherchecode(String mot)	//Recherche le code binaire d'un caract�re associ�
 	{
-		System.out.println("Recherche de la lettre en morse");
-		//setL(l.RetourneAuDebut());
-		// TODO : la liste se supprime petit à petit, il faut donc la reset pour chaques lettres.
-		//l.afficher_position();
-		System.out.println("VOICI l");
-		l.afficher_position();
-		System.out.println("------------------------");
+		Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
+		setL(f1.FichierToListe());
 
-		do {
+		//l.setLettre_ref(l.getSuivant().getLettre_ref());	//Pour récup le z Note: déplacer dans fichier
 
-			//Note : Faire remonter la piste de lecteur au tout debut � chaque nouvelle recherche dans la liste
-			//System.out.println("Recherche:"+mot+"/Trouve:"+Lettre_ref.getLettre());
-			if (l.Prec == null && l.Suivant != null)    //Si on commence au debut de la liste [ne marche pas, c'est B qui marche]
+	while(!(l.Lettre_ref.getLettre().equals(mot))){
+		l.setLettre_ref(l.getPrec().getLettre_ref());
+		l.setPrec(l.getPrec().getPrec());
+	}
+		System.out.println("SORTIE"+ l.Lettre_ref.getLettre() +l.Lettre_ref.getCode());
+
+		return l.Lettre_ref.getCode();
+	}
+
+	public String recherchemot(String code)	//Retrouve le mot en fonction du code saisie
+	{
+		Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
+		setL(f1.FichierToListe());
+
+		//l.setLettre_ref(l.getSuivant().getLettre_ref());	//Pour récup le z Note: déplacer dans fichier
+
+		while(!(l.Lettre_ref.getCode().equals(code))){
+			//	System.out.println("Je recherche le mot"+l.Lettre_ref.getCode()+"/"+code);
+			l.setLettre_ref(l.getPrec().getLettre_ref());
+			l.setPrec(l.getPrec().getPrec());
+		}
+		System.out.println("SORTIE : "+ l.Lettre_ref.getLettre() +" "+l.Lettre_ref.getCode());
+
+		return l.Lettre_ref.getLettre();
+	}
+
+	public String recherchecode2(String Mot)
+	{
+		String MotEnMorse = "";
+		for(int i =0; i <=Mot.length()-1;i++)
+		{
+			MotEnMorse = MotEnMorse + recherchecode(String.valueOf(Mot.charAt(i)).toLowerCase()+ " ");
+			System.out.println(""+MotEnMorse);
+		}
+
+		return MotEnMorse;
+	}
+	/*Note chaque lettre morse est séparé d'un espace*/
+	public String recherchemot2(String Code)
+	{
+		String MorseEnMot = "";
+
+		{
+			if(Code.contains(" "))	//Recherche si un espace est detecté car un espace = deux lettres mini
+			/*{
+				System.out.println("DETECTE ESPACE");
+				MorseEnMot = MorseEnMot + " "; /*Suppresion de l'espace
+				Code = Code.substring(0,Code.indexOf(" "));
+				System.out.println(""+Code);
+			}*/
 			{
-				System.out.println("A");
-				l.afficher_position();
-				l.setLettre_ref(l.getSuivant().getLettre_ref());
-				System.out.println("Recherche:" + mot + "/Trouve:" + l.Lettre_ref.getLettre() + " Statut " + l.Lettre_ref.getLettre().equals(mot));
-				l.Suivant = l.Suivant.getSuivant();
-
-			} else if (l.Prec != null)    //Si on commence � la fin de la liste
-			{
-				System.out.println("B");
-				l.setLettre_ref(l.getPrec().getLettre_ref());
-				System.out.println("Recherche:" + mot + "/Trouve:" + l.Lettre_ref.getLettre() + " Statut " + l.Lettre_ref.getLettre().equals(mot));
-				l.Suivant = l.Prec;
-				l.Prec = l.Prec.getPrec();
-
-			} else {
-				l.Suivant = l.getSuivant();
+				String [] tab = Code.split(" ");
 			}
 
-		} while (!(l.Lettre_ref.getLettre().equals(mot)));
-		System.out.println("SORTIE");
-		return l.Lettre_ref.getCode();
+			//System.out.println("CODE DU MOT RECHERCHE/" + MorseEnMot );
+			MorseEnMot = MorseEnMot + recherchemot(Code);
 
 
-	}
-	
-	public void recherchemot(String code)	//Retrouve le mot en fonction du code saisie
-	{
-		
+		}
+
+		return MorseEnMot;
 	}
 }

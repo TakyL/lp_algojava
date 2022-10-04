@@ -96,6 +96,35 @@ public class Liste {	//Tableau de liste A/.- => B/-...  en gros on associe chaqu
 		}	
 		
 	}
+	public void inserer2(Lettre l)	//Ajoute une lettre en queue
+	{
+		if(Suivant==null)
+		{
+			Liste l0 = new Liste();
+			l0.setLettre_ref(l);
+			l0.setPrec(null);
+			l0.setSuivant(Suivant);
+
+			Suivant = l0;
+		}
+		else
+		{
+			while(Suivant.getSuivant() != null)
+			{
+				Suivant = Suivant.getSuivant();
+			}
+			Liste l0 = new Liste();
+			l0.setLettre_ref(l);
+			l0.setSuivant(null);
+			l0.setPrec(Suivant);
+
+			Prec=Suivant;
+			Suivant=l0;
+
+
+		}
+
+	}
 		//Fonctions d'affichage
 	public void affichage()
 	{
