@@ -9,9 +9,9 @@ class BinaryTree {
     Node root;
     public static boolean flag = false;
     // Constructors
-    BinaryTree(String key) {
+    BinaryTree(String key, String letter) {
         assert false;
-        root = new Node(key,root.letter); }
+        root = new Node(key,letter); }
 
     BinaryTree() { root = null; }
 
@@ -23,6 +23,7 @@ class BinaryTree {
         }
         else{
             //If value is found in the given binary tree then, set the flag to true
+            //System.out.println(temp.key);
             if(Objects.equals(temp.key, value)){
                 flag = true;
                 System.out.println(temp.key+" "+temp.getLetter());
@@ -38,26 +39,24 @@ class BinaryTree {
             }
         }
     }
-    //TODO FIX Pour les lettres
-    public void searchNodeFromLetterCode(Node temp, String value){
+    public void searchNodeFromLetterCode(Node temp, String value) {
         //Check whether tree is empty
-        if(root == null){
+        if (root == null) {
             System.out.println("Tree is empty");
-        }
-        else{
+        } else {
             //If value is found in the given binary tree then, set the flag to true
-            if(Objects.equals(temp.letter, value)){
+            if (Objects.equals(temp.letter, value)) {
                 flag = true;
-                System.out.println(temp.letter+" "+temp.getKey());
-                return;
+                System.out.println(temp.letter + " " + temp.getKey());
+               return;
             }
             //Search in left subtree
-            if(!flag && temp.left != null){
-                searchNodeFromMorseCode(temp.left, value);
+            if (!flag && temp.left != null) {
+                searchNodeFromLetterCode(temp.left, value);
             }
             //Search in right subtree
-            if(!flag && temp.right != null){
-                searchNodeFromMorseCode(temp.right, value);
+            if (!flag && temp.right != null) {
+                searchNodeFromLetterCode(temp.right, value);
             }
         }
     }
@@ -105,12 +104,14 @@ class BinaryTree {
         tree.root.right.right.right.left = new Node("---.",null);
         tree.root.right.right.right.right = new Node("----",null);
 
+        //TODO Pour Thomas, Je veux par exemple chercher le code morse de la lettre "a"
         //tree.searchNodeFromMorseCode(tree.root, "--.");
-
         tree.searchNodeFromLetterCode(tree.root,"a");
-        if(flag)
-            System.out.println("Element is present in the binary tree");
+        //La lettre est trouvé, ton terminal affiche : a .
 
+        if(flag)
+            //Si la recherche de la lettre "a" dans les noeuds de l'arbre est trouver, je suis notifié
+            System.out.println("Element is present in the binary tree");
         else
             System.out.println("Element is not present in the binary tree");
 

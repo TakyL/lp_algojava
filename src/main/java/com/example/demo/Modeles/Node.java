@@ -11,8 +11,8 @@ class Node
     public Node(String morseCode ,String morseLetter)
     {
         key = morseCode;
-        left = right = null;
         letter = morseLetter;
+        left = right = null;
     }
 
     public String getKey() {

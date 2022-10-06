@@ -1,7 +1,9 @@
 package com.example.demo.Modeles;
 
+import static com.example.demo.Modeles.BinaryTree.flag;
+
 public class main {
-	public static void main(String args[])	//Main fx
+	public main(String[] args)	//Main fx
 	{
 		/*
 			Une liste(aka le dico) sera crée à partir du fichier ref.txt
@@ -88,7 +90,15 @@ public class main {
 			//FIXME Je n'existe pas dans les 26 lettres
 			//tree.root.right.right.right.left = new Node("---.", Trouveur.recherchemot("---."));
 			//tree.root.right.right.right.right = new Node("----", Trouveur.recherchemot("----"));
-			tree.searchNodeFromMorseCode(tree.root, "-.--");
+			//Search letter refering to -.--
+			//tree.searchNodeFromMorseCode(tree.root, "-.--");
+			//Search code refering to z
+			tree.searchNodeFromLetterCode(tree.root,"z");
+			if(flag)
+				System.out.println("Element is present in the binary tree");
+
+			else
+				System.out.println("Element is not present in the binary tree");
 
 
 	}
