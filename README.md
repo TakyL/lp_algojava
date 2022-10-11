@@ -2,7 +2,7 @@
 HUGO ARBRE BINAIRE SOLUTION
 - je genere un arbre binaire
 
-je met les lettre dans l'arbre en fonction de leur code
+je met les lettre dans l'arbre en fonction de leur code à l'aide de trouveur.cherchemot
 
 je veux traduire -.- .
 
