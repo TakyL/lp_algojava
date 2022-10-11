@@ -5,13 +5,12 @@ package com.example.demo.Modeles;
 class Node
 {
     String key;
-    String letter;
     Node left, right;
 
-    public Node(String morseCode ,String morseLetter)
+    public Node(String morseLetter)
     {
-        key = morseCode;
-        letter = morseLetter;
+
+        key = morseLetter;
         left = right = null;
     }
 
@@ -23,11 +22,4 @@ class Node
         this.key = key;
     }
 
-    public void setLetter(String letter) {
-        this.letter = letter;
-    }
-
-    public String getLetter() {
-        return letter;
-    }
 }

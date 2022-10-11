@@ -1,6 +1,8 @@
 package com.example.demo.Modeles;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicReference;
 
 // A Java program to introduce Binary Tree
 class BinaryTree {
@@ -8,136 +10,169 @@ class BinaryTree {
     // Root of Binary Tree
     Node root;
     public static boolean flag = false;
-    // Constructors
-    BinaryTree(String key, String letter) {
-        assert false;
-        root = new Node(key,letter); }
 
     BinaryTree() { root = null; }
 
-    //searchNodeFromMorseCode() will search for the particular node in the binary tree
-    public void searchNodeFromMorseCode(Node temp, String value){
-        //Check whether tree is empty
-        if(root == null){
-            System.out.println("Tree is empty");
+    public String searchNodeFromLetterCode(BinaryTree tree, String value) {
+        switch (value) {
+            case "." -> {
+                return tree.root.left.key;
+            }
+            case ".." -> {
+                return tree.root.left.left.key;
+            }
+            case "..." -> {
+                return tree.root.left.left.left.key;
+            }
+            case "..-" -> {
+                return tree.root.left.left.right.key;
+            }
+            case "...." -> {
+                return tree.root.left.left.left.left.key;
+            }
+            case "...-" -> {
+                return tree.root.left.left.left.right.key;
+            }
+            case "..-." -> {
+                return tree.root.left.left.right.left.key;
+            }
+            case ".-" -> {
+                return tree.root.left.right.key;
+            }
+            case ".-." -> {
+                return tree.root.left.right.left.key;
+            }
+            case ".-.." -> {
+                return tree.root.left.right.left.left.key;
+            }
+            case ".--" -> {
+                return tree.root.left.right.right.key;
+            }
+            case ".--." -> {
+                return tree.root.left.right.right.left.key;
+            }
+            case ".---" -> {
+                return tree.root.left.right.right.right.key;
+            }
+            case "-" -> {
+                return tree.root.right.key;
+            }
+            case "-." -> {
+                return tree.root.right.left.key;
+            }
+            case "-.." -> {
+                return tree.root.right.left.left.key;
+            }
+            case "-..." -> {
+                return tree.root.right.left.left.left.key;
+            }
+            case "-..-" -> {
+                return tree.root.right.left.left.right.key;
+            }
+            case "-.-" -> {
+                return tree.root.right.left.right.key;
+            }
+            case "-.-." -> {
+                return tree.root.right.left.right.left.key;
+            }
+            case "-.--" -> {
+                return tree.root.right.left.right.right.key;
+            }
+            case "--" -> {
+                return tree.root.right.right.key;
+            }
+            case "--." -> {
+                return tree.root.right.right.left.key;
+            }
+            case "--.." -> {
+                return tree.root.right.right.left.left.key;
+            }
+            case "--.-" -> {
+                return tree.root.right.right.left.right.key;
+            }
+            case "---" -> {
+                return tree.root.right.right.right.key;
+            }
         }
-        else{
-            //If value is found in the given binary tree then, set the flag to true
-            //System.out.println(temp.key);
-            if(Objects.equals(temp.key, value)){
-                flag = true;
-                System.out.println(temp.key+" "+temp.getLetter());
-                return;
-            }
-            //Search in left subtree
-            if(!flag && temp.left != null){
-                searchNodeFromMorseCode(temp.left, value);
-            }
-            //Search in right subtree
-            if(!flag && temp.right != null){
-                searchNodeFromMorseCode(temp.right, value);
-            }
-        }
-    }
-    public Node searchNodeFromLetterCode(Node temp, String value) {
-        //Check whether tree is empty
-        String result = temp.getKey();
-        System.out.println("START");
-        System.out.println(result);
-        //System.out.println(temp.key);
-        //System.out.println(temp.letter);
 
-
-        if (root == null) {
-            System.out.println("Tree is empty");
-        } else {
-            //If value is found in the given binary tree then, set the flag to true
-            if (Objects.equals(temp.letter, value)) {
-                flag = true;
-                System.out.println(temp.letter + " " + temp.getKey());
-                result = temp.getKey();
-                this.root.key= temp.key;
-                this.root.letter=temp.letter;
-                this.root.right=null;
-                this.root.left=null;
-
-            }
-            //Search in left subtree
-            if (!flag && temp.left != null) {
-                System.out.println("left");
-                searchNodeFromLetterCode(temp.left, value);
-            }
-            //Search in right subtree
-            if (!flag && temp.right != null) {
-                System.out.println("right");
-                searchNodeFromLetterCode(temp.right, value);
-            }
-        }
-        System.out.println("END");
-        System.out.println(result);
-        return this.root;
-
+        return null;
     }
 
     public static void main(String[] args)
     {
+        Fichier f1 = new  Fichier("src/main/java/com/example/demo/Texte/ref.txt");
+
+
+        Liste liste0 = f1.FichierToListe();	//R�cup�re toute la liste de conversion
+        //Liste de conversion de base .
+        Conversion Trouveur = new Conversion(liste0);
+        //System.out.println(Trouveur.recherchemot(".--"));
+
+        BinaryTree tree = getBinaryTree(Trouveur);
+
+        System.out.println(tree.searchNodeFromLetterCode(tree,"--.."));
+
+        //hugo in morsecode
+        String string =".... ..- --. ---";
+
+        translateUsingBinaryTree(tree, string);
+
+
+    }
+
+    private static void translateUsingBinaryTree(BinaryTree tree, String hugo) {
+        AtomicReference<String> result = new AtomicReference<>("");
+        ArrayList<String> wordArrayList = new ArrayList<>(Arrays.asList(hugo.split(" ")));
+        System.out.println(wordArrayList);
+        wordArrayList.forEach(s -> {
+                System.out.println(s);
+                System.out.println(tree.searchNodeFromLetterCode(tree,s));
+                result.set(result + tree.searchNodeFromLetterCode(tree, s));
+            System.out.println(result.get());
+
+        });
+    }
+
+    private static BinaryTree getBinaryTree(Conversion Trouveur) {
         BinaryTree tree = new BinaryTree();
-        // create root
-        tree.root = new Node("root","root");
+        tree.root = new Node("root");
         // Each left child represents a "dot" in the code, and each right child represents a "dash."
         // create blank nodes left side of the tree
-        tree.root.left = new Node(".","a");
-        tree.root.left.left = new Node("..","z");
-        tree.root.left.left.left = new Node("...","x");
-        tree.root.left.left.right = new Node("..-","e");
-        tree.root.left.left.left.left = new Node("....","c");
-        tree.root.left.left.left.right = new Node("...-",null);
-        tree.root.left.left.right.left = new Node("..-.",null);
-        tree.root.left.left.right.right = new Node("..--",null);
 
-        tree.root.left.right = new Node(".-",null);
-        tree.root.left.right.left = new Node(".-.",null);
-        tree.root.left.right.left.left = new Node(".-..",null);
-        tree.root.left.right.left.right = new Node(".-.-",null);
-        tree.root.left.right.right = new Node(".--",null);
-        tree.root.left.right.right.left = new Node(".--.",null);
-        tree.root.left.right.right.right = new Node(".---",null);
-
+        tree.root.left = new Node(Trouveur.recherchemot("."));
+        tree.root.left.left = new Node(Trouveur.recherchemot(".."));
+        tree.root.left.left.left = new Node(Trouveur.recherchemot("..."));
+        tree.root.left.left.right = new Node(Trouveur.recherchemot("..-"));
+        tree.root.left.left.left.left = new Node(Trouveur.recherchemot("...."));
+        tree.root.left.left.left.right = new Node(Trouveur.recherchemot("...-"));
+        tree.root.left.left.right.left = new Node(Trouveur.recherchemot("..-."));
+        //FIXME Je n'existe pas dans les 26 lettres
+        //tree.root.left.left.right.right = new Node("..--", Trouveur.recherchemot("..--"));
+        tree.root.left.right = new Node(Trouveur.recherchemot(".-"));
+        tree.root.left.right.left = new Node(Trouveur.recherchemot(".-."));
+        tree.root.left.right.left.left = new Node(Trouveur.recherchemot(".-.."));
+        //FIXME Je n'existe pas dans les 26 lettres
+        //tree.root.left.right.left.right = new Node(".-.-", Trouveur.recherchemot(".-.-"));
+        tree.root.left.right.right = new Node(Trouveur.recherchemot(".--"));
+        tree.root.left.right.right.left = new Node(Trouveur.recherchemot(".--."));
+        tree.root.left.right.right.right = new Node(Trouveur.recherchemot(".---"));
         // create blank nodes right side of the tree
-        tree.root.right = new Node("-","p");
-        tree.root.right.left = new Node("-.",null);
-        tree.root.right.left.left = new Node("-..","d");
-        tree.root.right.left.left.left = new Node("-...",null);
-        tree.root.right.left.left.right = new Node("-..-",null);
-        tree.root.right.left.right = new Node("-.-",null);
-        tree.root.right.left.right.left = new Node("-.-.",null);
-        tree.root.right.left.right.right = new Node("-.--",null);
-
-        tree.root.right.right = new Node("--",null);
-        tree.root.right.right.left = new Node("--.","j");
-        tree.root.right.right.left.left = new Node("--..",null);
-        tree.root.right.right.left.right = new Node("--.-",null);
-        tree.root.right.right.right = new Node("---",null);
-        tree.root.right.right.right.left = new Node("---.",null);
-        tree.root.right.right.right.right = new Node("----","b");
-
-        //TODO Pour chaques traduction, un arbre est a génerer
-        //tree.searchNodeFromMorseCode(tree.root, ".--");
-        //tree.searchNodeFromLetterCode(tree.root,"j");
-        //System.out.println(tree.searchNodeFromLetterCode(tree.root,"j").key);
-        String yes = tree.searchNodeFromLetterCode(tree.root,"d").key;
-        System.out.println("----------------");
-        System.out.println(yes);
-        //System.out.println(tree.searchNodeFromLetterCode(tree.root,"j").letter);
-
-        //La lettre est trouvé, ton terminal affiche : a .
-
-        if(flag)
-            //Si la recherche de la lettre "a" dans les noeuds de l'arbre est trouver, je suis notifié
-            System.out.println("Element is present in the binary tree");
-        else
-            System.out.println("Element is not present in the binary tree");
-
-
+        tree.root.right = new Node(Trouveur.recherchemot("-"));
+        tree.root.right.left = new Node(Trouveur.recherchemot("-."));
+        tree.root.right.left.left = new Node(Trouveur.recherchemot("-.."));
+        tree.root.right.left.left.left = new Node(Trouveur.recherchemot("-..."));
+        tree.root.right.left.left.right = new Node(Trouveur.recherchemot("-..-"));
+        tree.root.right.left.right = new Node(Trouveur.recherchemot("-.-"));
+        tree.root.right.left.right.left = new Node(Trouveur.recherchemot("-.-."));
+        tree.root.right.left.right.right = new Node(Trouveur.recherchemot("-.--"));
+        tree.root.right.right = new Node(Trouveur.recherchemot("--"));
+        tree.root.right.right.left = new Node(Trouveur.recherchemot("--."));
+        tree.root.right.right.left.left = new Node(Trouveur.recherchemot("--.."));
+        tree.root.right.right.left.right = new Node(Trouveur.recherchemot("--.-"));
+        tree.root.right.right.right = new Node(Trouveur.recherchemot("---"));
+        //FIXME Je n'existe pas dans les 26 lettres
+        //tree.root.right.right.right.left = new Node("---.", Trouveur.recherchemot("---."));
+        //tree.root.right.right.right.right = new Node("----", Trouveur.recherchemot("----"));
+        return tree;
     }
 }
