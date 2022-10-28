@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Interface_Ctrl">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Interface_Ctrl">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -66,7 +66,7 @@
                      <children>
                         <Button fx:id="btn_TvM" mnemonicParsing="false" onAction="#Conv_TvM" prefWidth="238.0" text="Texte Vers Morse" GridPane.rowIndex="1" />
                         <Button fx:id="btn_MvT" mnemonicParsing="false" onAction="#Conv_Mvt" prefWidth="160.0" text="Morse vers Texte" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lbl_erreur" text="Label" GridPane.rowIndex="2" />
+                        <Label fx:id="lbl_erreur" text="Label" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                         <RadioButton fx:id="radio_liste" mnemonicParsing="false" text="Liste" />
                         <RadioButton fx:id="radio_arbre" mnemonicParsing="false" text="Arbre" GridPane.columnIndex="1" />
                      </children>
