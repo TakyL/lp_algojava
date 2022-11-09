@@ -1,8 +1,8 @@
 # 3A_Projet_AppliRep-_S5_2022-
 
 Projet Java avec FXML :
-fichier texte en un fichier Morse et inversement. 
-—les types
+fichier texte en un fichier Morse et inversement. <br>
+—les types<br>
 —les fonctions de base
 —les fonctions de haut niveau
 —l'application.
