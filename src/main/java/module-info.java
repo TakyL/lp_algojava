@@ -3,7 +3,17 @@ module com.example.demo {
     requires javafx.fxml;
 
 
-   opens com.example.demo to javafx.fxml;
-    exports com.example.demo;
+
+    opens fr.iut to javafx.fxml;
+    exports fr.iut;
+/*
+   opens fr.iut.vue to javafx.fxml;
+    exports fr.iut.vue;
+    exports fr.iut.controler;
+    opens fr.iut.controler to javafx.fxml;
+    exports fr.iut.vue;
+    opens fr.iut.vue to javafx.fxml;
+    exports fr.iut;
+    opens fr.iut to javafx.fxml;*/
 
 }
