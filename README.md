@@ -1,4 +1,4 @@
-# 3A_Projet_AppliRep-_S5_2022-
+# 3A_Projet_AlgoJava-_S5_2022-
 
 Projet Java avec FXML :
 fichier texte en un fichier Morse et inversement. <br>
