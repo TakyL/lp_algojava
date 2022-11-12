@@ -1,4 +1,4 @@
-package fr.iut;
+package fr.iut.vue;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

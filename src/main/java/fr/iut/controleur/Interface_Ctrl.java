@@ -1,4 +1,4 @@
-package fr.iut;
+package fr.iut.controleur;
 
 import fr.iut.modeles.BinaryTree;
 import fr.iut.modeles.Conversion;
