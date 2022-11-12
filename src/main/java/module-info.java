@@ -6,8 +6,8 @@ module com.example.demo {
 
     opens fr.iut to javafx.fxml;
     exports fr.iut;
-    exports fr.iut.vue;
-    opens fr.iut.vue to javafx.fxml;
+   // exports fr.iut.vue;
+    //opens fr.iut.vue to javafx.fxml;
 /*
    opens fr.iut.vue to javafx.fxml;
     exports fr.iut.vue;
