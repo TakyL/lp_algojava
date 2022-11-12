@@ -13,13 +13,22 @@ public class Conversion {
 	}
 
 
+	/**
+	 * Construit un dictonnaire à partir d'une liste
+	 * @param l : La liste (içi en provenance du fichier ref.txt)
+	 */
 	public Conversion(Liste l) {
 		super();
 		this.l = l;
 	}
 
 
-	public String RechercheMorse(String lettre)	//Recherche le code morse d'une lettre
+	/**
+	 * Recherche le code morse d'une lettre
+	 * @param lettre : caractère ("a","b"...etc)
+	 * @return String: code morse de la lettre
+	 */
+	private String RechercheMorse(String lettre)	//Recherche le code morse d'une lettre
 	{
 		Fichier f1 = new  Fichier("src/main/resources/morse.codelist/ref.txt");
 
@@ -32,7 +41,12 @@ public class Conversion {
 		return l.Lettre_ref.getCode();
 	}
 
-	public String RecherchetLettre(String code)	//Retrouve la lettre en fonction du code saisie
+	/**
+	 * Recherche la lettre à partir d'un code morse
+	 * @param code : String correspond au code morse ex: "...-"
+	 * @return String correspond à la lettre trouvée
+	 */
+	private String RecherchetLettre(String code)	//Retrouve la lettre en fonction du code saisie
 	{
 		Fichier f1 = new  Fichier("src/main/resources/morse.codelist/ref.txt");
 
@@ -49,6 +63,11 @@ public class Conversion {
 		return l.Lettre_ref.getLettre();
 	}
 
+	/**
+	 *Permet de convertir un mot en code morse (Ne fonctionne pas avec des phrases)
+	 * @param Mot String : Mot à convertir ex:"abc"
+	 * @return String : Le code morse du mot saisie en paramètre ex: .- -... -.-. / chaque code morse est séparé d'un espace pour pouvoir retrouver leur équivalent en lettre
+	 */
 	public String ConversionMotsVersMorse(String Mot)	//Recherche le morse à partir d'un mot/phrase
 	{
 		String MotEnMorse = "";	//Texte à afficher
@@ -72,6 +91,11 @@ public class Conversion {
 		return MotEnMorse;
 	}
 
+	/**
+	 * Permet de convertir un code morse en mot
+	 * @param Code String : Code morse ex: .- -... -.-.
+	 * @return String : Mot code morse ex:"abc"
+	 */
 	/*Note chaque lettre en code morse est séparé d'un espace*/
 	public String ConversionMorseVersMots(String Code)	//Recherche le mot à partir d'un code morse
 	{

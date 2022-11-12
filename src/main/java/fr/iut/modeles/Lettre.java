@@ -2,7 +2,7 @@ package fr.iut.modeles;
 
 public class Lettre {
 	String lettre;	//A B C
-	String code;// Code morse de la lettre associ�e
+	String code;// Code morse de la lettre associée
 
 		//Getters et Setters
 	public String getLettre() {
@@ -17,7 +17,12 @@ public class Lettre {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
+
+	/**
+	 * Construit un objet Lettre
+	 * @param lettre String  : lettre ex:"a","b"
+	 * @param code String : équivalent de la lettre en code morse
+	 */
 	public Lettre(String lettre, String code) {
 		super();
 		this.lettre = lettre;

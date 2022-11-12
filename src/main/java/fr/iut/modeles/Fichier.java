@@ -7,12 +7,20 @@ public class Fichier {
 	final String  urlfichier ;	//Le fichier txt
 
 
+	/**
+	 * Crée un objet fichier en fonction d'un url saisie
+	 * @param fichier Url du fichier de référence
+	 */
 	public Fichier(String  fichier) {
 		super();
 		this.urlfichier = fichier;
 	}
 
 
+	/**
+	 * Lit le fichier ref.txt et crée un Objet Liste en fonction du contenu de ce fichier(Création du dictionnaire)
+	 * @return Liste
+	 */
 	public Liste FichierToListe() //Lit un fichier texte et renvoie une liste à partir de ce fichier(dictionnaire)
 	{
 
