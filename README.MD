@@ -18,7 +18,7 @@ Extensions éffectués :<br>
 — un arbre de conversion pour faire la traduction d'un fichier morse en un fichier texte.<br>
 — utiliser une interface graphique pour gérer la traduction. <br>
 
-Captures d'écran du projet :
+Captures d'écran du projet :<br>
 ![image](https://user-images.githubusercontent.com/73029436/201484941-e603bc64-d90c-4aaa-914b-77ea28d1c0d2.png)
 ![image](https://user-images.githubusercontent.com/73029436/201484922-17055fd9-4593-44ee-8ac6-c912b6868f62.png)
 ![image](https://user-images.githubusercontent.com/73029436/201484973-59211381-35b1-4335-9f4b-813bbc070a5b.png)
