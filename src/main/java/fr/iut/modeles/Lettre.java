@@ -1,5 +1,8 @@
 package fr.iut.modeles;
 
+/**
+ * Classe représentant une Lettre et son Code Morse
+ */
 public class Lettre {
 	String lettre;	//A B C
 	String code;// Code morse de la lettre associée

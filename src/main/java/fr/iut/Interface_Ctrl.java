@@ -17,6 +17,9 @@ import java.util.ResourceBundle;
 import static fr.iut.modeles.BinaryTree.getBinaryTree;
 import static fr.iut.modeles.BinaryTree.translateUsingBinaryTree;
 
+/**
+ * Interface partie Controleur du projet
+ */
 public class Interface_Ctrl  implements Initializable{
 
     @FXML

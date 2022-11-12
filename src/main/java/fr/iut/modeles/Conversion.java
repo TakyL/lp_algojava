@@ -1,5 +1,10 @@
 package fr.iut.modeles;
 
+/**
+ * Classe Conversion qui permet la conversion :
+ * Code Morse -> Texte
+ * Texte -> Code Morse
+ */
 @SuppressWarnings("StringConcatenationInLoop")
 public class Conversion {
 	Liste l;

@@ -2,6 +2,9 @@ package fr.iut.modeles;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Classe qui permet l'ouverture du fichier .txt contenant le dictionnaire Morse
+ */
 public class Fichier {
 
 	final String  urlfichier ;	//Le fichier txt

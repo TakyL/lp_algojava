@@ -1,7 +1,9 @@
 package fr.iut.modeles;
 
-// Class containing left and right child
-// of current node and key value
+/**
+ *
+ *Class containing left and right child of current node and key value
+ */
 class Node
 {
     String key;

@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/**
+ * Interface partie Vue du projet
+ */
 public class Interface_Vue extends Application {
     @Override
     public void start(Stage stage) throws IOException {

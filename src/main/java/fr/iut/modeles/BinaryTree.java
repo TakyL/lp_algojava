@@ -3,8 +3,9 @@ package fr.iut.modeles;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
-
-// A Java program to introduce Binary Tree
+/**
+ *Une Classe Java représentant les arbres binaire de Noeuds utilisé pour la traduction d'un Code Morse vers du Texte
+ */
 public class BinaryTree {
 
     // Root of Binary Tree
@@ -12,7 +13,14 @@ public class BinaryTree {
 
     public BinaryTree() { root = null; }
 
-    //Création d'un arbre binaire contenant la traduction de chaque code morse en lettre
+
+
+    /**
+     * Implémentation dans un arbre binaire des traductions de chaques code morse en lettre
+     * @param tree Arbre Binaire
+     * @param value Code Morse
+     * @return lettre équivalente au Code Morse
+     */
     public String searchNodeFromLetterCode(BinaryTree tree, String value) {
         switch (value) {
             case "." -> {
@@ -97,22 +105,30 @@ public class BinaryTree {
 
         return null;
     }
-    // Méthode permettant de convertir un code morse vers un texte
+
+
+    /**
+     * Méthode permettant de convertir un code morse vers un texte
+     * @param tree Arbre Binaire
+     * @param morse Code Morse
+     * @return Une Chaine de caractère qui contient la traduction du Code Morse
+     */
     public static String translateUsingBinaryTree(BinaryTree tree, String morse) {
         AtomicReference<String> result = new AtomicReference<>("");
         ArrayList<String> wordArrayList = new ArrayList<>(Arrays.asList(morse.split(" ")));
         //System.out.println(wordArrayList);
         wordArrayList.forEach(s -> {
-            //System.out.println(s);
-            //System.out.println(tree.searchNodeFromLetterCode(tree,s));
             result.set(result + tree.searchNodeFromLetterCode(tree, s));
-            //System.out.println(result.get());
-
+            //System.out.println(s);System.out.println(tree.searchNodeFromLetterCode(tree,s));System.out.println(result.get());
         });
-
         return String.valueOf(result.get());
     }
-    //Remplit notre arbre binaire en fonction de ref.txt (on remplit les valeurs des noeuds de l'arbre par une lettre).
+
+    /**
+     *Remplit notre arbre binaire en fonction de ref.txt (on remplit les valeurs des noeuds de l'arbre par une lettre).
+     * @param Trouveur
+     * @return tree (BinaryTree)
+     */
     public static BinaryTree getBinaryTree(Conversion Trouveur) {
         BinaryTree tree = new BinaryTree();
         tree.root = new Node("root");

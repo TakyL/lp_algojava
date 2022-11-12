@@ -1,5 +1,8 @@
 package fr.iut.modeles;
 
+/**
+ * Classe représentant la Liste permettant la traduction
+ */
 public class Liste {
 
 	Lettre Lettre_ref;//Lettre actuel
