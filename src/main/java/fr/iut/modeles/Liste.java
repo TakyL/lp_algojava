@@ -17,6 +17,9 @@ public class Liste {
 //	}
 // --Commented out by Inspection STOP (09/11/2022 21:14)
 
+	/**
+	 * Construit une liste doublement fillé
+	 */
 	public Liste()
 	{
 		Suivant=null;
@@ -34,15 +37,24 @@ public class Liste {
 		Lettre_ref = lettre_ref;
 	}
 
+	/**
+	 * Récupère l'élément suivant de la liste
+	 * @return Liste : élément suivant de la liste
+	 */
 	public Liste getSuivant() {
 		return Suivant;
 	}
+
 
 	public void setSuivant(Liste suivant) {
 		Suivant = suivant;
 	}
 
 
+	/**
+	 * Récupère l'élément précédent de la liste
+	 * @return Liste : élément précedent de la liste
+	 */
 	public Liste getPrec() {
 		return Prec;
 	}
@@ -52,21 +64,24 @@ public class Liste {
 	}
 
 
-
+	/**
+	 * Ajoute une lettre à la liste
+	 * @param l String : la lettre à ajouter
+	 */
 	public void inserer(Lettre l)	//Ajoute une lettre à la liste (Utilise la class Lettre)
 	{
-		if(Suivant==null)
+		if(Suivant==null)	//Si il n'y a pas de prochain élément
 		{
 			Liste l0 = new Liste();
 			l0.setLettre_ref(l);
 			l0.setPrec(null);
 			l0.setSuivant(Suivant);
 
-			Suivant = l0;
+			Suivant = l0;	//Ajoute la lettre à la liste
 		}
-		else
+		else	//Sinon
 		{
-			while(Suivant.getSuivant() != null)
+			while(Suivant.getSuivant() != null)//Parcours la liste pour retrouver le dernier élément
 			{
 				Suivant = Suivant.getSuivant();
 			}
@@ -75,8 +90,8 @@ public class Liste {
 			l0.setSuivant(null);
 			l0.setPrec(Suivant);
 
-			Prec=Suivant;
-			Suivant=l0;
+			Prec=Suivant;//Conserve la valeur précedente
+			Suivant=l0;//Ajoute la lettre à la suite
 
 
 		}
@@ -95,6 +110,9 @@ public class Liste {
 //	}
 // --Commented out by Inspection STOP (09/11/2022 21:13)
 
+	/***
+	 * Affiche les éléments de la liste à partir du début
+	 */
 	public void AffichageDebut()	//Affiche tous les �l�ments de la liste
 	{
 		System.out.println("Affichage Descendant");
@@ -108,6 +126,9 @@ public class Liste {
 		}
 	}
 
+	/**
+	 * Affiche les éléments de la liste à partir de la fin
+	 */
 	public void AffichageFin()	//Affiche tous les �l�ments de la liste
 	{
 		System.out.println("Affichage Ascendant");
@@ -120,13 +141,15 @@ public class Liste {
 		}
 	}
 
-	public void afficher_position()	//Permet de connaitre l'emplacement des lettrers (debug)
+	/**
+	 * Permet de connaitre le contenu de suivant et précedent
+	 */
+	public void afficher_position()	//Permet de connaitre l'emplacement des lettres (debug)
 	{
 		if(getSuivant() == null)System.out.println("PREC"+getPrec().getLettre_ref());
 		else if(getPrec() == null) System.out.println("NEXT"+getSuivant().getLettre_ref());
 		else System.out.println("ALL"+Suivant.getLettre_ref()+Prec.getLettre_ref());
 	}
 	//TODO l'insertion d'un code, la suppression d'un code, la recherche d'un code dans une liste,....etc.
-	//TODO Package Texte a suppr pour le package ressource
 
 }

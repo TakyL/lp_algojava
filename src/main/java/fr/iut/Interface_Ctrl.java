@@ -27,6 +27,7 @@ public class Interface_Ctrl  implements Initializable{
 
     @FXML
     private Button btn_MvT; //Morse vers Texte
+
     @FXML
     private TextArea saisie;    //Sasie utilisateur et resultat
 
@@ -36,21 +37,29 @@ public class Interface_Ctrl  implements Initializable{
     @FXML
     private RadioButton radio_liste;
 
+    /**
+     * Lancement de la fenetre
+     * @param arg0
+     * @param arg1
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) { //Au lancement de la fenetre
         lbl_erreur.setText("");
-        radio_liste.setSelected(true);
+        radio_liste.setSelected(true);//Met le radio button liste actif par défaut
 
     }
 
+    /**
+     * Permet de convertir du code morse en mot en fonction du contenu dans le text area
+     */
     @FXML
     protected void Conv_Mvt(){  //Morse vers texte
         lbl_erreur.setText(" ");
-        if(saisie.getText().trim() != null)
+        if(saisie.getText().trim() != null) //Si texte saisie non nul
         {
                 //Utilise la liste
            if((MethodeDefault()))    saisie.setText(CreationObjetConv().ConversionMorseVersMots(saisie.getText()).trim());
-            else
+            else    //Utilise l'arbre
            {
                BinaryTree tree = getBinaryTree(CreationObjetConv());
                saisie.setText(translateUsingBinaryTree(tree, saisie.getText()));    //Morse vers texte
@@ -58,6 +67,9 @@ public class Interface_Ctrl  implements Initializable{
         }
     }
 
+    /**
+     * Permet de convertir un mot en code morse en fonction du contenu dans le text area
+     */
     @FXML
     protected void Conv_TvM(){  //Texte Vers Morse
         lbl_erreur.setText(" ");
@@ -69,6 +81,10 @@ public class Interface_Ctrl  implements Initializable{
         }
     }
 
+    /**
+     * Crée le dictionnaire en fonction d'un fichier texte
+     * @return Objet Conversion
+     */
     public Conversion CreationObjetConv()   //Créer un objet conversion et le renvoie
     {
         Fichier f1 = new  Fichier("src/main/resources/morse.codelist/ref.txt");
